@@ -70,4 +70,13 @@ class BinarySearchTest {
         assertEquals(position, MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION);
         assertEquals(key, multipleElementSeq[position]);
     }
+
+    @Test
+    void multipleElementSeqWhichHasNotKeyTest() {
+        int key = 60;
+        SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
+        assertFalse(searchResult.isFound());
+        int position = searchResult.getPosition();
+        assertEquals(position, NOT_FOUND);
+    }
 }

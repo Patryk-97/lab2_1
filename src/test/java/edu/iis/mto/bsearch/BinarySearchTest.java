@@ -13,7 +13,7 @@ class BinarySearchTest {
     private static int[] multipleElementSeq = {10, 20, 30, 40, 50};
     private static final int MULTIPLE_ELEMENT_SEQ_FIRST_POSITION = 0;
     private static final int MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION = 2;
-    private static final int MULTIPLE_ELEMENT_SEQ_LAST_POSITION = 4;
+    private static final int MULTIPLE_ELEMENT_SEQ_LAST_POSITION = multipleElementSeq.length - 1;
     private BinarySearch binarySearch;
     private static final int NOT_FOUND = -1;
 
@@ -48,6 +48,16 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         int position = searchResult.getPosition();
         assertEquals(position, MULTIPLE_ELEMENT_SEQ_FIRST_POSITION);
+        assertEquals(key, multipleElementSeq[position]);
+    }
+
+    @Test
+    void multipleElementSeqWhichHasKeyInLastPositionTest() {
+        int key = 50;
+        SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
+        assertTrue(searchResult.isFound());
+        int position = searchResult.getPosition();
+        assertEquals(position, MULTIPLE_ELEMENT_SEQ_LAST_POSITION);
         assertEquals(key, multipleElementSeq[position]);
     }
 }

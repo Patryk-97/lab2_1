@@ -1,5 +1,6 @@
 package edu.iis.mto.bsearch;
 
+import static edu.iis.mto.bsearch.IsNotFound.notFound;
 import static edu.iis.mto.bsearch.IsPositionOf.positionOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -20,7 +21,6 @@ class BinarySearchTest {
     private static final int MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION = multipleElementSeq.length / 2;
     private static final int MULTIPLE_ELEMENT_SEQ_LAST_POSITION = multipleElementSeq.length - 1;
     private BinarySearch binarySearch;
-    private static final int NOT_FOUND = -1;
 
     @BeforeEach
     void setup() {
@@ -43,7 +43,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
         assertFalse(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, NOT_FOUND);
+        assertThat(position, is(notFound()));
     }
 
     @Test
@@ -82,7 +82,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertFalse(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, NOT_FOUND);
+        assertThat(position, is(notFound()));
     }
 
     @Test

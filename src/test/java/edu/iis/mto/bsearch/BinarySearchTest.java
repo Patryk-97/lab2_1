@@ -1,6 +1,7 @@
 package edu.iis.mto.bsearch;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -27,4 +28,12 @@ class BinarySearchTest {
         assertEquals(key, oneElementSeq[position]);
     }
 
+    @Test
+    void oneElementSeqWhichHasNotKeyTest() {
+        int key = 2;
+        SearchResult searchResult = binarySearch.search(key, oneElementSeq);
+        assertFalse(searchResult.isFound());
+        int position = searchResult.getPosition();
+        assertEquals(position, NOT_FOUND);
+    }
 }

@@ -18,6 +18,8 @@ class BinarySearchTest {
     private static final int MULTIPLE_ELEMENT_SEQ_FIRST_POSITION = 0;
     private static final int MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION = multipleElementSeq.length / 2;
     private static final int MULTIPLE_ELEMENT_SEQ_LAST_POSITION = multipleElementSeq.length - 1;
+    private static int[] seqOfSameElements = {100, 100, 100, 100, 100};
+    private static final int SEQ_OF_SAME_ELEMENTS_MIDDLE_POSITION = seqOfSameElements.length / 2;
     private BinarySearch binarySearch;
 
     @BeforeEach
@@ -93,5 +95,15 @@ class BinarySearchTest {
     void nullInsteadSeqTest() {
         int key = 1;
         assertThrows(NullPointerException.class, () -> binarySearch.search(key, null));
+    }
+
+    @Test
+    void searchSeqOfSameElementsWhichHasKeyInMiddlePositionTest() {
+        int key = 100;
+        SearchResult searchResult = binarySearch.search(key, seqOfSameElements);
+        assertThat(searchResult.isFound(), is(true));
+        int position = searchResult.getPosition();
+        assertThat(position, is(positionOf(SEQ_OF_SAME_ELEMENTS_MIDDLE_POSITION)));
+        assertThat(key, is(equalTo(seqOfSameElements[position])));
     }
 }

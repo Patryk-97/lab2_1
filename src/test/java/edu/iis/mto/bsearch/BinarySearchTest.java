@@ -3,11 +3,9 @@ package edu.iis.mto.bsearch;
 import static edu.iis.mto.bsearch.IsNotFound.notFound;
 import static edu.iis.mto.bsearch.IsPositionOf.positionOf;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,17 +29,17 @@ class BinarySearchTest {
     void oneElementSeqWhichHasKeyTest() {
         int key = 1;
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
-        assertTrue(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(true));
         int position = searchResult.getPosition();
         assertThat(position, is(positionOf(0)));
-        assertEquals(key, oneElementSeq[position]);
+        assertThat(key, is(equalTo(oneElementSeq[position])));
     }
 
     @Test
     void oneElementSeqWhichHasNotKeyTest() {
         int key = 2;
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
-        assertFalse(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(false));
         int position = searchResult.getPosition();
         assertThat(position, is(notFound()));
     }
@@ -50,37 +48,37 @@ class BinarySearchTest {
     void multipleElementSeqWhichHasKeyInFirstPositionTest() {
         int key = 10;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
-        assertTrue(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(true));
         int position = searchResult.getPosition();
         assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_FIRST_POSITION)));
-        assertEquals(key, multipleElementSeq[position]);
+        assertThat(key, is(equalTo(multipleElementSeq[position])));
     }
 
     @Test
     void multipleElementSeqWhichHasKeyInLastPositionTest() {
         int key = 50;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
-        assertTrue(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(true));
         int position = searchResult.getPosition();
         assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_LAST_POSITION)));
-        assertEquals(key, multipleElementSeq[position]);
+        assertThat(key, is(equalTo(multipleElementSeq[position])));
     }
 
     @Test
     void multipleElementSeqWhichHasKeyInMiddlePositionTest() {
         int key = 30;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
-        assertTrue(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(true));
         int position = searchResult.getPosition();
         assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION)));
-        assertEquals(key, multipleElementSeq[position]);
+        assertThat(key, is(equalTo(multipleElementSeq[position])));
     }
 
     @Test
     void multipleElementSeqWhichHasNotKeyTest() {
         int key = 60;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
-        assertFalse(searchResult.isFound());
+        assertThat(searchResult.isFound(), is(false));
         int position = searchResult.getPosition();
         assertThat(position, is(notFound()));
     }

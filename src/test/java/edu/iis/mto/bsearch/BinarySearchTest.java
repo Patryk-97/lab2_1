@@ -1,5 +1,8 @@
 package edu.iis.mto.bsearch;
 
+import static edu.iis.mto.bsearch.IsPositionOf.positionOf;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -30,7 +33,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
         assertTrue(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, 0);
+        assertThat(position, is(positionOf(0)));
         assertEquals(key, oneElementSeq[position]);
     }
 
@@ -49,7 +52,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertTrue(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, MULTIPLE_ELEMENT_SEQ_FIRST_POSITION);
+        assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_FIRST_POSITION)));
         assertEquals(key, multipleElementSeq[position]);
     }
 
@@ -59,7 +62,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertTrue(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, MULTIPLE_ELEMENT_SEQ_LAST_POSITION);
+        assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_LAST_POSITION)));
         assertEquals(key, multipleElementSeq[position]);
     }
 
@@ -69,7 +72,7 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertTrue(searchResult.isFound());
         int position = searchResult.getPosition();
-        assertEquals(position, MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION);
+        assertThat(position, is(positionOf(MULTIPLE_ELEMENT_SEQ_MIDDLE_POSITION)));
         assertEquals(key, multipleElementSeq[position]);
     }
 

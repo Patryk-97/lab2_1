@@ -20,6 +20,7 @@ class BinarySearchTest {
     private static final int MULTIPLE_ELEMENT_SEQ_LAST_POSITION = multipleElementSeq.length - 1;
     private static int[] seqOfSameElements = {100, 100, 100, 100, 100};
     private static final int SEQ_OF_SAME_ELEMENTS_MIDDLE_POSITION = seqOfSameElements.length / 2;
+    private static int[] unorderedSeq = {500, 200, 100, 400, 300};
     private BinarySearch binarySearch;
 
     @BeforeEach
@@ -105,5 +106,14 @@ class BinarySearchTest {
         int position = searchResult.getPosition();
         assertThat(position, is(positionOf(SEQ_OF_SAME_ELEMENTS_MIDDLE_POSITION)));
         assertThat(key, is(equalTo(seqOfSameElements[position])));
+    }
+
+    @Test
+    void searchElementWhichIsInUnorderedSeq() {
+        int key = 500;
+        SearchResult searchResult = binarySearch.search(key, unorderedSeq);
+        assertThat(searchResult.isFound(), is(false));
+        int position = searchResult.getPosition();
+        assertThat(position, is(notFound()));
     }
 }

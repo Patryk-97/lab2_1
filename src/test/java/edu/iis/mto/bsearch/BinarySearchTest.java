@@ -26,7 +26,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void oneElementSeqWhichHasKeyTest() {
+    void searchOneElementSeqWhichHasKeyTest() {
         int key = 1;
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
         assertThat(searchResult.isFound(), is(true));
@@ -36,7 +36,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void oneElementSeqWhichHasNotKeyTest() {
+    void searchOneElementSeqWhichHasNotKeyTest() {
         int key = 2;
         SearchResult searchResult = binarySearch.search(key, oneElementSeq);
         assertThat(searchResult.isFound(), is(false));
@@ -45,7 +45,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void multipleElementSeqWhichHasKeyInFirstPositionTest() {
+    void searchMultipleElementSeqWhichHasKeyInFirstPositionTest() {
         int key = 10;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertThat(searchResult.isFound(), is(true));
@@ -55,7 +55,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void multipleElementSeqWhichHasKeyInLastPositionTest() {
+    void searchMultipleElementSeqWhichHasKeyInLastPositionTest() {
         int key = 50;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertThat(searchResult.isFound(), is(true));
@@ -65,7 +65,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void multipleElementSeqWhichHasKeyInMiddlePositionTest() {
+    void searchMultipleElementSeqWhichHasKeyInMiddlePositionTest() {
         int key = 30;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertThat(searchResult.isFound(), is(true));
@@ -75,7 +75,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void multipleElementSeqWhichHasNotKeyTest() {
+    void searchMultipleElementSeqWhichHasNotKeyTest() {
         int key = 60;
         SearchResult searchResult = binarySearch.search(key, multipleElementSeq);
         assertThat(searchResult.isFound(), is(false));
@@ -84,7 +84,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void emptySeqTest() {
+    void searchEmptySeqTest() {
         int key = 1;
         assertThrows(IllegalArgumentException.class, () -> binarySearch.search(key, emptySeq));
     }

@@ -2,6 +2,7 @@ package edu.iis.mto.bsearch;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
+    private static int[] emptySeq = new int[0];
     private static int[] oneElementSeq = {1};
     private static int[] multipleElementSeq = {10, 20, 30, 40, 50};
     private static final int MULTIPLE_ELEMENT_SEQ_FIRST_POSITION = 0;
@@ -78,5 +80,11 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         int position = searchResult.getPosition();
         assertEquals(position, NOT_FOUND);
+    }
+
+    @Test
+    void emptySeqTest() {
+        int key = 1;
+        assertThrows(IllegalArgumentException.class, () -> binarySearch.search(key, emptySeq));
     }
 }
